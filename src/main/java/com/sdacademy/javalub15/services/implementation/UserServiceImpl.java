@@ -40,4 +40,16 @@ public class UserServiceImpl implements UserService {
 
         return dtos;
     }
+
+    @Override
+    @Transactional
+    public UserDTO findById(Long id) throws Exception {
+        if (id == null) {
+            throw new Exception("no user with id found");
+        }
+
+        User user = userRepository.getOne(id);
+        UserDTO userDTO = new UserDTO(user.getUsername(), user.getPassword(), user.getEmail());
+        return userDTO;
+    }
 }

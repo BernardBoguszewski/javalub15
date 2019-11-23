@@ -26,4 +26,9 @@ public class UserController {
         return userService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public UserDTO findById(@PathVariable Long id) throws Exception {
+        return userService.findById(id);
+    }
+
 }

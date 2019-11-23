@@ -9,4 +9,6 @@ public interface UserService {
     Long addUser(UserDTO userDTO);
 
     List<UserDTO> findAll();
+
+    UserDTO findById(Long id) throws Exception;
 }
