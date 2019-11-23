@@ -2,6 +2,8 @@ package com.sdacademy.javalub15.controllers;
 
 import com.sdacademy.javalub15.controllers.dtos.UserDTO;
 import com.sdacademy.javalub15.services.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,0 +1,8 @@
+package com.sdacademy.javalub15.services.implementation;
+
+import com.sdacademy.javalub15.services.OrderService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+}
