@@ -66,4 +66,13 @@ public class UserServiceImpl implements UserService {
         UserDTO dto = new UserDTO(persistedUSer.getUsername(), persistedUSer.getPassword(), persistedUSer.getEmail());
         return dto;
     }
+
+    @Override
+    @Transactional
+    public void deleteUserById(Long id) {
+        // TODO: 23.11.2019 walidacja
+        User user = userRepository.getOne(id);
+        userRepository.delete(user);
+    }
+
 }

@@ -13,4 +13,6 @@ public interface UserService {
     UserDTO findById(Long id) throws Exception;
 
     UserDTO updateUser(Long id, UserDTO userDTO);
+
+    void deleteUserById(Long id);
 }
