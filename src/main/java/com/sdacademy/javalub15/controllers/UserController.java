@@ -31,4 +31,9 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @PutMapping("/{id}")
+    public UserDTO updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        return userService.updateUser(id, userDTO);
+    }
+
 }

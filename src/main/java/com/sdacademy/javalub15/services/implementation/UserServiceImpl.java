@@ -52,4 +52,18 @@ public class UserServiceImpl implements UserService {
         UserDTO userDTO = new UserDTO(user.getUsername(), user.getPassword(), user.getEmail());
         return userDTO;
     }
+
+    @Override
+    @Transactional
+    public UserDTO updateUser(Long id, UserDTO userDTO) {
+        // TODO: 23.11.2019 walidacja
+        User dbo = userRepository.getOne(id);
+        dbo.setEmail(userDTO.getEmail());
+        dbo.setPassword(userDTO.getPassword());
+        dbo.setUsername(userDTO.getUsername());
+
+        User persistedUSer = userRepository.save(dbo);
+        UserDTO dto = new UserDTO(persistedUSer.getUsername(), persistedUSer.getPassword(), persistedUSer.getEmail());
+        return dto;
+    }
 }

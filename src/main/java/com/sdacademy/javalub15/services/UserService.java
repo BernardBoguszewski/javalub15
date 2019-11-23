@@ -11,4 +11,6 @@ public interface UserService {
     List<UserDTO> findAll();
 
     UserDTO findById(Long id) throws Exception;
+
+    UserDTO updateUser(Long id, UserDTO userDTO);
 }
