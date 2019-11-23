@@ -7,6 +7,9 @@ import com.sdacademy.javalub15.services.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -24,5 +27,17 @@ public class UserServiceImpl implements UserService {
 
         User persistedUser = userRepository.save(user);
         return persistedUser.getId();
+    }
+
+    @Override
+    @Transactional
+    public List<UserDTO> findAll() {
+        List<User> allUsers = userRepository.findAll();
+        List<UserDTO> dtos = new ArrayList<>();
+        allUsers.forEach(user -> {
+            dtos.add(new UserDTO(user.getUsername(), user.getPassword(), user.getEmail()));
+        });
+
+        return dtos;
     }
 }
