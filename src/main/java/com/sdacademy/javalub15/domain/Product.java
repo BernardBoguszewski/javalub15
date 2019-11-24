@@ -1,5 +1,7 @@
 package com.sdacademy.javalub15.domain;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
+@Data
 public class Product {
 
     @Id
@@ -16,6 +19,8 @@ public class Product {
 
     @ManyToMany(mappedBy = "products")
     private List<Order> orders;
+
+
 
     private String name;
 

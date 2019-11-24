@@ -17,7 +17,7 @@ public class OrderController {
     private OrderService orderService;// TODO: 23.11.2019 wstrzyknięcie zależności
 
 
-    public ResponseEntity<OrderDTO>  addOrder(@PathVariable Long id, @RequestBody OrderRequestDTO orderRequestDTO) {
+    public ResponseEntity<OrderDTO>  addOrder(@PathVariable Long id, @RequestBody OrderRequestDTO orderRequestDTO) throws Exception {
         // TODO: 23.11.2019 dodanie zamówienia na podawie userId oraz request dto
         OrderDTO orderDTO = orderService.addOrder(id, orderRequestDTO);
         return ResponseEntity.ok(orderDTO);
