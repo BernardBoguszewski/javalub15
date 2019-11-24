@@ -1,12 +1,12 @@
 package com.sdacademy.javalub15.services.implementation;
 
-import com.google.common.collect.Lists;
 import com.sdacademy.javalub15.controllers.dtos.OrderDTO;
 import com.sdacademy.javalub15.controllers.dtos.OrderRequestDTO;
 import com.sdacademy.javalub15.domain.Order;
 import com.sdacademy.javalub15.domain.Product;
 import com.sdacademy.javalub15.domain.User;
 import com.sdacademy.javalub15.repositories.OrderRepository;
+import com.sdacademy.javalub15.repositories.ProductRepository;
 import com.sdacademy.javalub15.repositories.UserRepository;
 import com.sdacademy.javalub15.services.OrderService;
 import com.sdacademy.javalub15.services.ProductService;
@@ -30,10 +30,13 @@ public class OrderServiceImpl implements OrderService {
 
     private OrderRepository orderRepository;
 
-    public OrderServiceImpl(UserRepository userRepository, ProductService productService, OrderRepository orderRepository) {
+    private ProductRepository productRepository;
+
+    public OrderServiceImpl(UserRepository userRepository, ProductService productService, OrderRepository orderRepository, ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.productService = productService;
         this.orderRepository = orderRepository;
+        this.productRepository = productRepository;
     }
 
     @Transactional
@@ -75,5 +78,28 @@ public class OrderServiceImpl implements OrderService {
 
         BigDecimal orderValue = OrderValueCalculator.calculateOrderValue(products);
         return orderValue;
+    }
+
+    @Override
+    @Transactional
+    public OrderDTO addProductToOrder(Long id, Long productId) throws Exception {
+        if (id == null) {
+            throw new Exception("order id is null");
+        }
+        Order order = orderRepository.getOne(id);
+        if (order == null) {
+            throw new Exception("cannot find order");
+        }
+
+        if (productId == null) {
+            throw new Exception("product id is null");
+        }
+        Product product = productRepository.getOne(productId);
+        if (product == null) {
+            throw new Exception("cannot find product");
+        }
+
+        order.getProducts().add(product);
+        return OrderMapper.mapToDto(order);
     }
 }

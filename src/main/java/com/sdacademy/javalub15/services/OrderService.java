@@ -9,4 +9,6 @@ public interface OrderService {
     OrderDTO addOrder(Long id, OrderRequestDTO orderRequestDTO) throws Exception;
 
     BigDecimal getOrderValue(Long id) throws Exception;
+
+    OrderDTO addProductToOrder(Long id, Long productId) throws Exception;
 }

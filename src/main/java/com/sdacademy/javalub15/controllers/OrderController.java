@@ -41,6 +41,7 @@ public class OrderController {
     }
 
     public ResponseEntity<OrderDTO> addOneProductToOrder(@PathVariable Long id, @RequestBody Long productId) {
+        OrderDTO orderDTO = orderService.addProductToOrder(id, productId);
         return ResponseEntity.ok(new OrderDTO()); // TODO: 23.11.2019 dodanie produktu po id + walidacja czy dany produkt istnieje
     }
 

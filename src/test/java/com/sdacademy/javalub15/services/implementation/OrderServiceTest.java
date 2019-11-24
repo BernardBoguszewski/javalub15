@@ -35,7 +35,7 @@ public class OrderServiceTest {
 
     @Before
     public void setUp() {
-        orderService = new OrderServiceImpl(userRepository, productService, orderRepository);
+        orderService = new OrderServiceImpl(userRepository, productService, orderRepository, productRepository);
     }
 
     @Test
