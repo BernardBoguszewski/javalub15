@@ -37,7 +37,7 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void addOrder() throws Exception {
+    public void testAddingOrder() throws Exception {
         //given
         Mockito.when(userRepository.getOne(Mockito.any())).thenReturn(new User());
         Mockito.when(productService.findProductsByIds(Mockito.any())).thenReturn(Lists.newArrayList());
@@ -53,6 +53,7 @@ public class OrderServiceTest {
         Mockito.verify(orderRepository).save(Mockito.any());
         Mockito.verify(productService).findProductsByIds(Mockito.any());
         Mockito.verify(userRepository).getOne(Mockito.any());
-
     }
+
+
 }

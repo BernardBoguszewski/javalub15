@@ -45,9 +45,10 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<BigDecimal> showOrderValue(@PathVariable Long id) {
+    public ResponseEntity<BigDecimal> showOrderValue(@PathVariable Long id) throws Exception {
         // TODO: 23.11.2019 zwraca sumę zamówienia
-        return ResponseEntity.ok(new BigDecimal(600)); //przykład
+        BigDecimal orderValue = orderService.getOrderValue(id);
+        return ResponseEntity.ok(orderValue); //przykład
     }
 
 

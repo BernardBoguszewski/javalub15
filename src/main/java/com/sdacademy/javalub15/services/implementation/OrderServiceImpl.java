@@ -1,5 +1,6 @@
 package com.sdacademy.javalub15.services.implementation;
 
+import com.google.common.collect.Lists;
 import com.sdacademy.javalub15.controllers.dtos.OrderDTO;
 import com.sdacademy.javalub15.controllers.dtos.OrderRequestDTO;
 import com.sdacademy.javalub15.domain.Order;
@@ -9,11 +10,14 @@ import com.sdacademy.javalub15.repositories.OrderRepository;
 import com.sdacademy.javalub15.repositories.UserRepository;
 import com.sdacademy.javalub15.services.OrderService;
 import com.sdacademy.javalub15.services.ProductService;
+import com.sdacademy.javalub15.services.calculators.OrderValueCalculator;
 import com.sdacademy.javalub15.services.mappers.OrderMapper;
 import com.sdacademy.javalub15.services.validators.OrderRequestDTOValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -52,5 +56,24 @@ public class OrderServiceImpl implements OrderService {
 
         OrderDTO orderDTO = OrderMapper.mapToDto(order);
         return orderDTO;
+    }
+
+    @Override
+    public BigDecimal getOrderValue(Long id) throws Exception {
+        if (id == null) {
+            throw new Exception("Order id is null");
+        }
+        Order order = orderRepository.getOne(id);
+        if (order == null) {
+            throw new Exception("Cannot find order with specified id");
+        }
+
+        List<Product> products = order.getProducts();
+        if (CollectionUtils.isEmpty(products)) {
+            throw new Exception("Empty products");
+        }
+
+        BigDecimal orderValue = OrderValueCalculator.calculateOrderValue(products);
+        return orderValue;
     }
 }
