@@ -34,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     @Override
-    public OrderDTO addOrder(Long id, OrderRequestDTO orderRequestDTO) throws Exception {
-        User user = userRepository.getOne(id);
+    public OrderDTO addOrder(Long userId, OrderRequestDTO orderRequestDTO) throws Exception {
+        User user = userRepository.getOne(userId);
         if (user == null) {
             throw new Exception("User not found"); // TODO: 24.11.2019 opakowanie we własny wyjątek
         }

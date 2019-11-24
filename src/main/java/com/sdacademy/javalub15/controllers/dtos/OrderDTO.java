@@ -9,6 +9,8 @@ public class OrderDTO {
 
     private List<Long> productIds;
 
+    private String createDate;
+
     public Long getUserId() {
         return userId;
     }
@@ -23,5 +25,13 @@ public class OrderDTO {
 
     public void setProductIds(List<Long> productIds) {
         this.productIds = productIds;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 }
