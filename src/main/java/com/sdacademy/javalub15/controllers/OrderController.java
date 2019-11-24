@@ -40,7 +40,7 @@ public class OrderController {
         return ResponseEntity.ok(new OrderDTO()); // TODO: 23.11.2019 update zamówienia po id
     }
 
-    public ResponseEntity<OrderDTO> addOneProductToOrder(@RequestBody Long productId) {
+    public ResponseEntity<OrderDTO> addOneProductToOrder(@PathVariable Long id, @RequestBody Long productId) {
         return ResponseEntity.ok(new OrderDTO()); // TODO: 23.11.2019 dodanie produktu po id + walidacja czy dany produkt istnieje
     }
 

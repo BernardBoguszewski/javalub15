@@ -16,6 +16,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.math.BigDecimal;
+
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceTest {
 
@@ -53,6 +55,23 @@ public class OrderServiceTest {
         Mockito.verify(orderRepository).save(Mockito.any());
         Mockito.verify(productService).findProductsByIds(Mockito.any());
         Mockito.verify(userRepository).getOne(Mockito.any());
+    }
+
+    @Test
+    public void testGettingOrderValue() throws Exception {
+        //given
+        Order order = new Order();
+        Product product = new Product();
+        product.setPrice(new BigDecimal(1));
+        order.setProducts(Lists.newArrayList(product));
+        Mockito.when(orderRepository.getOne(Mockito.any())).thenReturn(order);
+
+        //when
+        orderService.getOrderValue(1L);
+
+        //then
+        Mockito.verify(orderRepository).getOne(Mockito.any());
+
     }
 
 
