@@ -6,6 +6,7 @@ import com.sdacademy.javalub15.domain.Order;
 import com.sdacademy.javalub15.domain.Product;
 import com.sdacademy.javalub15.domain.User;
 import com.sdacademy.javalub15.repositories.OrderRepository;
+import com.sdacademy.javalub15.repositories.ProductRepository;
 import com.sdacademy.javalub15.repositories.UserRepository;
 import com.sdacademy.javalub15.services.OrderService;
 import com.sdacademy.javalub15.services.ProductService;
@@ -31,6 +32,9 @@ public class OrderServiceTest {
 
     @Mock
     private ProductService productService;
+
+    @Mock
+    private ProductRepository productRepository;
 
 
     @Before
@@ -71,7 +75,6 @@ public class OrderServiceTest {
 
         //then
         Mockito.verify(orderRepository).getOne(Mockito.any());
-
     }
 
 
