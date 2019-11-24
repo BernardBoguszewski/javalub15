@@ -12,7 +12,9 @@ public class OrderMapper {
 
     public static OrderDTO mapToDto(Order order) {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setUserId(order.getId());
+        if (order.getUser() != null) {
+            orderDTO.setUserId(order.getUser().getId());
+        }
         if (!CollectionUtils.isEmpty(order.getProducts())) {
             List<Long> productIds = Lists.newArrayList();
             order.getProducts().forEach(product -> {
