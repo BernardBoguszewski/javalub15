@@ -45,7 +45,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<BigDecimal> showOrderValue() {
+    public ResponseEntity<BigDecimal> showOrderValue(@PathVariable Long id) {
         // TODO: 23.11.2019 zwraca sumę zamówienia
         return ResponseEntity.ok(new BigDecimal(600)); //przykład
     }

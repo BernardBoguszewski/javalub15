@@ -20,8 +20,6 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<Order> orders;
 
-
-
     private String name;
 
     private BigDecimal price;
