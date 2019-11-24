@@ -26,11 +26,14 @@ public class UserServiceTest {
 
     @Test
     public void testShouldAddUser() {
-        User user = new User();
+        //given
         Mockito.when(userRepository.save(Mockito.any())).thenReturn(new User());
 
+        //when
         userService.addUser(new UserDTO());
 
+        //then
         Mockito.verify(userRepository, Mockito.atLeastOnce()).save(Mockito.any());
     }
+
 }

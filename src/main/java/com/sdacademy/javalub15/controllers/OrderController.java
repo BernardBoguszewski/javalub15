@@ -19,7 +19,8 @@ public class OrderController {
 
     public ResponseEntity<OrderDTO>  addOrder(@PathVariable Long id, @RequestBody OrderRequestDTO orderRequestDTO) {
         // TODO: 23.11.2019 dodanie zamówienia na podawie userId oraz request dto
-        return null;
+        OrderDTO orderDTO = orderService.addOrder(id, orderRequestDTO);
+        return ResponseEntity.ok(orderDTO);
     }
 
     public ResponseEntity deleteOrder(){
