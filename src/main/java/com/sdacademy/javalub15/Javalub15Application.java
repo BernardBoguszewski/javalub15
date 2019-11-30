@@ -14,6 +14,10 @@ public class Javalub15Application implements CommandLineRunner{
 
 	private UserRepository userRepository;
 
+	public Javalub15Application(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(Javalub15Application.class, args);
 	}
@@ -23,10 +27,10 @@ public class Javalub15Application implements CommandLineRunner{
 		User user = new User();
 		Authority authority = new Authority();
 		authority.setAuthority("ROLE_USER");
-		authority.setUser(user);
 		user.setUsername("user@mail.com");
 		user.setPassword(new BCryptPasswordEncoder().encode("pass"));
 		user.setAuthoritySet(Sets.newHashSet(authority));
+		authority.setUser(user);
 		userRepository.save(user);
 
 	}
