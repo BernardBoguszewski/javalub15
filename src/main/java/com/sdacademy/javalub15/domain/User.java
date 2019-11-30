@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -21,6 +22,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Authority> authoritySet;
 
     public User() {
     }
@@ -69,5 +73,13 @@ public class User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public Set<Authority> getAuthoritySet() {
+        return authoritySet;
+    }
+
+    public void setAuthoritySet(Set<Authority> authoritySet) {
+        this.authoritySet = authoritySet;
     }
 }
