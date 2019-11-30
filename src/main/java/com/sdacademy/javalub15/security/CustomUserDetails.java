@@ -27,19 +27,23 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        // TODO: 30.11.2019  
-        return true;
+        return !isLocked();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        // TODO: 30.11.2019  
-        return true;
+        if (LocalDate.now().isEqual(getPasswordExpireDate())) {
+            return false;
+        }
+        if (LocalDate.now().isBefore(getPasswordExpireDate())) {
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public boolean isEnabled() {
-        // TODO: 30.11.2019  
-        return true;
+        return isAccountEnable();
     }
 }

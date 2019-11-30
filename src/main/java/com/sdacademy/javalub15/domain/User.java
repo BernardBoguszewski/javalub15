@@ -26,6 +26,12 @@ public class User {
 
     private LocalDate expireDate;
 
+    private boolean locked;
+
+    private LocalDate passwordExpireDate;
+
+    private boolean accountEnable;
+
     public User() {
     }
 
@@ -89,5 +95,29 @@ public class User {
 
     public void setExpireDate(LocalDate expireDate) {
         this.expireDate = expireDate;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+
+    public LocalDate getPasswordExpireDate() {
+        return passwordExpireDate;
+    }
+
+    public void setPasswordExpireDate(LocalDate passwordExpireDate) {
+        this.passwordExpireDate = passwordExpireDate;
+    }
+
+    public boolean isAccountEnable() {
+        return accountEnable;
+    }
+
+    public void setAccountEnable(boolean accountEnable) {
+        this.accountEnable = accountEnable;
     }
 }

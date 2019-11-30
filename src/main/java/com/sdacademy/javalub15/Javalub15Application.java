@@ -34,6 +34,9 @@ public class Javalub15Application implements CommandLineRunner{
 		user.setAuthoritySet(Sets.newHashSet(authority));
 		authority.setUser(user);
 		user.setExpireDate(LocalDate.of(2019, 12, 2));
+		user.setPasswordExpireDate(LocalDate.of(2019, 12, 2));
+		user.setLocked(false);
+		user.setAccountEnable(true);
 		userRepository.save(user);
 
 	}
