@@ -26,4 +26,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         CustomUserDetails customUserDetails = UserDetailsMapper.mapUserToUserDetails(user);
         return customUserDetails;
     }
+
 }
