@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.time.LocalDate;
+
 @SpringBootApplication
 public class Javalub15Application implements CommandLineRunner{
 
@@ -31,6 +33,7 @@ public class Javalub15Application implements CommandLineRunner{
 		user.setPassword(new BCryptPasswordEncoder().encode("pass"));
 		user.setAuthoritySet(Sets.newHashSet(authority));
 		authority.setUser(user);
+		user.setExpireDate(LocalDate.of(2019, 12, 2));
 		userRepository.save(user);
 
 	}

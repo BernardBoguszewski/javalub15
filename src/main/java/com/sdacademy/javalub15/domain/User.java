@@ -1,6 +1,7 @@
 package com.sdacademy.javalub15.domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +23,8 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Authority> authoritySet;
+
+    private LocalDate expireDate;
 
     public User() {
     }
@@ -78,5 +81,13 @@ public class User {
 
     public void setAuthoritySet(Set<Authority> authoritySet) {
         this.authoritySet = authoritySet;
+    }
+
+    public LocalDate getExpireDate() {
+        return expireDate;
+    }
+
+    public void setExpireDate(LocalDate expireDate) {
+        this.expireDate = expireDate;
     }
 }

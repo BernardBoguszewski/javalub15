@@ -16,6 +16,7 @@ public class UserDetailsMapper {
         customUserDetails.setPassword(user.getPassword());
         customUserDetails.setAuthoritySet(user.getAuthoritySet());
         customUserDetails.setOrders(user.getOrders());
+        customUserDetails.setExpireDate(user.getExpireDate());
 
         return customUserDetails;
     }
