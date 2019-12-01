@@ -9,10 +9,11 @@ import javax.validation.constraints.NotNull;
 
 public class UserDTO {
 
+    @Email
     @NotBlank
     private String username;
 
-    @NotBlank
+
     @PasswordValidator
     private String password;
 
