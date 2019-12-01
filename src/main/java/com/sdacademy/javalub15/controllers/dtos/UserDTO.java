@@ -1,5 +1,7 @@
 package com.sdacademy.javalub15.controllers.dtos;
 
+import com.sdacademy.javalub15.services.validators.PasswordValidator;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -11,6 +13,7 @@ public class UserDTO {
     private String username;
 
     @NotBlank
+    @PasswordValidator
     private String password;
 
     private String email;
