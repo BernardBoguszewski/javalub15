@@ -1,9 +1,16 @@
 package com.sdacademy.javalub15.controllers.dtos;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class UserDTO {
 
+    @NotBlank
     private String username;
 
+    @NotBlank
     private String password;
 
     private String email;
