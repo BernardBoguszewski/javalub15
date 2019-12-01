@@ -42,5 +42,10 @@
         </div>
     </fieldset>
 </form>
+<br/>
+<form method="get" action="/register">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <button type="submit">Rejestracja</button>
+</form>
 </body>
 </html>
